@@ -15,16 +15,14 @@ const openDb = () => {
     return pool;
 };
 
-const query = (sql, values = []) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const pool = openDb();
-            const result = await pool.query(sql, values);
-            resolve(result);
-        } catch (error) {
-            reject(error);
-        }
-    });
+const query = async (sql, values = []) => {
+    try {
+        const result = await pool.query(sql, values);
+        return result;
+    } catch (error) {
+        console.error('Database query error:', error);
+        throw error;
+    }
 };
 
 module.exports = { query };
