@@ -14,7 +14,6 @@ const pool = new Pool({
 
 const query = async (sql, values = []) => {
     try {
-        console.log(process.env.DB_HOST)
         const result = await pool.query(sql, values);
         return result;
     } catch (error) {
