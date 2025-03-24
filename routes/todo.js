@@ -6,12 +6,9 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const result = await query('SELECT * FROM task');
-        console.log(result)
         const rows = result.rows ? result.rows : [];
-        console.log(rows)
         res.status(200).json(rows);
     } catch (error) {
-        console.log(error)
         res.statusMessage = error;
         res.status(500).json({ error: error });
     }
