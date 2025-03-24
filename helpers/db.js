@@ -22,7 +22,7 @@ const query = (sql, values = []) => {
             const result = await pool.query(sql, values);
             resolve(result);
         } catch (error) {
-            reject(error.message);
+            reject(error);
         }
     });
 };
